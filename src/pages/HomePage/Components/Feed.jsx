@@ -5,13 +5,16 @@ import Post from "../../../Components/Post";
 import { AppContext } from "../../../context/AppContext";
 import { useContext, useEffect, useState } from "react";
 export default function Feed() {
-  const { getAllPosts } = useContext(AppContext);
+  const { getAllPosts, contract } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
 
+  const getPosts = async () => {
+    const posts = await getAllPosts();
+    setPosts(posts);
+  };
+
   useEffect(() => {
-    getAllPosts().then((posts) => {
-      setPosts(posts);
-    });
+    getPosts();
   }, []);
 
   return (
