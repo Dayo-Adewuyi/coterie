@@ -3,31 +3,7 @@ import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Conversation from "./Conversation";
 
-const MessageHead = () => {
-  const conversations = [
-    {
-      image: "/baka.jfif",
-      userName: "Oghenetega",
-      time: "45mins ago",
-      lastMessage: "I refuse to abandon any hope!!!",
-      isActive: true,
-    },
-    {
-      image: "/baka.jfif",
-      userName: "Dayo_mah gee@234",
-      time: "3 days ago",
-      lastMessage: "Cry me a river",
-      isActive: false,
-    },
-    {
-      image: "/baka.jfif",
-      userName: "maybeDestiny!@",
-      time: "1 month ago",
-      lastMessage: "Ouch",
-      isActive: false,
-    },
-  ];
-
+const MessageHead = ({ conversationsArray }) => {
   return (
     <div className="border-l border-r w-full">
       <div className="flex justify-between px-4 py-2">
@@ -49,7 +25,7 @@ const MessageHead = () => {
         />
       </div>
       <div className="w-full mt-4">
-        {conversations.map((conversation) => {
+        {conversationsArray.map((conversation) => {
           return (
             <>
               <Conversation
