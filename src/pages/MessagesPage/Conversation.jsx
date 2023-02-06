@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 
 const Conversation = ({ image, userName, time, lastMessage, isActive }) => {
   return (
@@ -8,13 +7,7 @@ const Conversation = ({ image, userName, time, lastMessage, isActive }) => {
         isActive ? "bg-gray-400" : "bg-gray-200"
       }`}
     >
-      <Image
-        src={image}
-        width={16}
-        height={16}
-        alt="img"
-        className="rounded-[50%] h-8 w-8"
-      />
+      <img src={image} alt="img" className="rounded-[50%] h-8 w-8" />
       <div className="">
         <div className="flex gap-4">
           <p className="text-[12px] font-semibold">{userName}</p>
