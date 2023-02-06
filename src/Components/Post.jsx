@@ -69,7 +69,7 @@ function Post({
       params: { chain: "goerli" },
       headers: {
         accept: "application/json",
-        Authorization: "5a7ab1f1-b76b-4434-85f4-06868427084c",
+        Authorization: "58d8b870-86e9-4461-abcd-0ca2635edfc1",
       },
     };
 
@@ -124,7 +124,7 @@ function Post({
         </div>
         {postPage && <p className="mt-0.5 text-lg">{content}</p>}
         <img
-          src={img}
+          src={"https://gateway.lighthouse.storage/ipfs/" + img}
           alt=""
           className="rounded-2xl max-h-[700px] object-cover mr-2"
         />
@@ -172,18 +172,20 @@ function Post({
               >
                 <CurrencyDollarIcon className="h-5 group-hover:text-green-500" />
               </div>
-              <Modal show={show} onHide={() => setShow(false)}>
-                <Modal.Header closeButton></Modal.Header>
+              <div>
+                <Modal show={show} onHide={() => setShow(false)}>
+                  <Modal.Header closeButton></Modal.Header>
 
-                <Modal.Body>
-                  <SendTransaction />
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={() => setShow(false)}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+                  <Modal.Body>
+                    <SendTransaction />
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShow(false)}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
             </div>
           )}
 

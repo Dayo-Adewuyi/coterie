@@ -2,26 +2,18 @@ import { SparklesIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Input from "./Input";
 import Post from "../../../Components/Post";
-
+import { AppContext } from "../../../context/AppContext";
+import { useContext, useEffect, useState } from "react";
 export default function Feed() {
-  const posts = [
-    {
-      id: 0,
-      author: "Alpha",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quis consequatur rem! Eos reiciendis eveniet optio qui at velit aperiam.",
-      timestamp: "1675667200",
-      img: "https://media.wired.com/photos/598e35fb99d76447c4eb1f28/16:9/w_2123,h_1194,c_limit/phonepicutres-TA.jpg",
-    },
-    {
-      id: 1,
-      author: "Alpha",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quis consequatur rem! Eos reiciendis eveniet optio qui at velit aperiam.",
-      timestamp: "17 July, 2022",
-      img: "/vercel.svg",
-    },
-  ];
+  const { getAllPosts } = useContext(AppContext);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getAllPosts().then((posts) => {
+      setPosts(posts);
+    });
+  }, []);
+
   return (
     <div className="border-l border-r">
       <div className="flex items-center sm:justify-between py-2 px-3 sticky top-0 z-50 border-b">
@@ -35,14 +27,16 @@ export default function Feed() {
       <div className="pb-72">
         {posts?.map((post) => (
           <Post
-            key={post.id}
-            id={post.id}
+            key={post.postId}
+            id={post.postId}
             author={post.author}
             content={post.content}
-            img={post.img}
+            img={post.image}
             timestamp={post.timestamp}
             postPage={true}
-            contractAddress="test"
+            contractAddress={post.contractAddress}
+            likeCount={post.likes}
+            commentCount={post.commentCount}
           />
         ))}
       </div>

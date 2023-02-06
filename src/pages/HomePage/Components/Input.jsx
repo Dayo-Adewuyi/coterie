@@ -45,7 +45,7 @@ function Input() {
     headers: {
       accept: "application/json",
       "content-type": "application/json",
-      Authorization: "5a7ab1f1-b76b-4434-85f4-06868427084c",
+      Authorization: "58d8b870-86e9-4461-abcd-0ca2635edfc1",
     },
     data: {
       team_reserve: 0,
@@ -126,26 +126,31 @@ function Input() {
             rows={2}
             className="bg-transparent outline-none text-lg placeholder-gray-500 tracking-wide w-full min-h-[50px]"
           />
-          <Modal show={show} onHide={() => setShow(false)}>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Title>Enter the NFT price</Modal.Title>
-            <Modal.Body>
-              <input
-                type="number"
-                aria-label="Enter the NFT price"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />{" "}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={() => setShow(false)}>
-                Close
-              </Button>
-              <Button variant="primary" onClick={() => setShow(false)}>
-                Save
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          <div
+            className="modal show d-block position-relative overflow-auto p-3"
+            style={{ display: "block", position: "initial" }}
+          >
+            <Modal show={show} onHide={() => setShow(false)}>
+              <Modal.Header closeButton></Modal.Header>
+              <Modal.Title>Enter the NFT price</Modal.Title>
+              <Modal.Body>
+                <input
+                  type="number"
+                  aria-label="Enter the NFT price"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />{" "}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={() => setShow(false)}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={() => setShow(false)}>
+                  Save
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
           {selectedFile && (
             <div className="relative">
               <div
